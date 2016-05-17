@@ -40,6 +40,7 @@ if __name__ == '__main__':
     print 'Usando :', lector
     conexion= lector.createConnection()
     conexion.connect()
+    #### enviar datos ####
     data, sw1, sw2 = conexion.transmit(COMMAND)
     print 'datos >:', data
     tipo = type(data)
@@ -48,4 +49,6 @@ if __name__ == '__main__':
     print 'leng', tam
     print 'datos en sting :',toHexString(data)
     print "Command: %02X %02X" % (sw1, sw2)
+    print sw1+sw2
+    
       # Read data from RFID reader
