@@ -61,6 +61,7 @@ if __name__ == '__main__':
             cadena = cadena + str(hexan[x])
 
         print cadena
-
+        decimal = int(cadena,16)
+        print decimal
 
       # Read data from RFID reader
