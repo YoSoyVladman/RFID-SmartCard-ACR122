@@ -48,7 +48,7 @@ if __name__ == '__main__':
     print a
     if a == 144:
         print 'datos >:', data
-        v = data.reverse()
+        v = data[::-1]
         print v
         hexa = toHexString(data)
         hexan = hexa.split( )
