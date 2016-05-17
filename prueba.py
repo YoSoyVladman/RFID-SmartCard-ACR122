@@ -48,11 +48,11 @@ if __name__ == '__main__':
     print a
     if a == 144:
         print 'datos >:', data
-        tipo = type(data)
-        print 'tipo ', tipo
-        tam = len(data)
-        print 'leng', tam
         hexa = toHexString(data)
+        tipo = type(hexa)
+        print 'tipo ', tipo
+        tam = len(hexa)
+        print 'leng', tam
         cadena = ''
         
         for x in range(tam):
