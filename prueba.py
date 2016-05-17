@@ -2,7 +2,7 @@ import re, sys, signal, os, time, datetime
 import requests
 from smartcard.System import readers
 from smartcard.util import toHexString
-import opc
+##import opc
 
 # se definen los APDUs 
 # 
@@ -10,7 +10,7 @@ COMMAND = [0xff, 0xCA, 0x00, 0x00, 0x00]
 
 ####### FACECANDY ####### 
 numLEDs = 512
-cliente = opc.Client('localhost:7890')
+#cliente = opc.Client('localhost:7890')
 negro = [ (0,0,0) ] * numLEDs
 blanco = [ (255,255,255) ] * numLEDs
 
@@ -38,7 +38,7 @@ if __name__ == '__main__':
     print 'lectores disponibles', r
     lector = r[0]
     print 'Usando :', lector
-    conexion.reader.createConnection()
+    conexion= lector.createConnection()
     conexion.connect()
     data, sw1, sw2 = conexion.transmit(COMMAND)
     print data
