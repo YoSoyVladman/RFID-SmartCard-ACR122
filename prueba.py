@@ -41,6 +41,7 @@ if __name__ == '__main__':
     conexion= lector.createConnection()
     conexion.connect()
     data, sw1, sw2 = conexion.transmit(COMMAND)
+	print data
     print toHexString(data)
     print "Command: %02X %02X" % (sw1, sw2)
       # Read data from RFID reader
