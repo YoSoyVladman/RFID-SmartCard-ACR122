@@ -7,8 +7,16 @@ negro = [ (0,0,0) ] * numLEDs
 blanco = [ (255,255,255) ] * numLEDs
 
 # Fade to white
-cliente.put_pixels(negro)
-time.sleep(0.5)
-cliente.put_pixels(blanco)
-time.sleep(1)
-cliente.put_pixels(negro)
+# 
+# 
+
+function encender_led():
+	cliente.put_pixels(negro)
+	time.sleep(.5)
+	cliente.put_pixels(blanco)
+	time.sleep(2)
+	cliente.put_pixels(negro)
+
+
+
+encender_led()
