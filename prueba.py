@@ -43,25 +43,25 @@ if __name__ == '__main__':
     #### enviar datos ####
     data, sw1, sw2 = conexion.transmit(COMMAND)
 
-    print "Command: %02X %02X" % (sw1, sw2)
-    a = sw1
-    print a
-    if a == 144:
-        print 'datos >:', data
-        v = data[::-1]
-        print v
-        hexa = toHexString(v)
-        hexan = hexa.split( )
-        ##print hexa, hexan
-        tam = len(hexan)
-        print 'leng', tam
-        cadena = ''
+    while True:
+        print "Command: %02X %02X" % (sw1, sw2)
+        a = sw1
+        print a
+        if a == 144:
+            print 'datos >:', data
+            v = data[::-1]
+            print v
+            hexa = toHexString(v)
+            hexan = hexa.split( )
+            ##print hexa, hexan
+            tam = len(hexan)
+            print 'leng', tam
+            cadena = ''
 
-        for x in range(tam):
-            cadena = cadena + str(hexan[x])
+            for x in range(tam):
+                cadena = cadena + str(hexan[x])
 
-        print cadena
-        decimal = int(cadena,16)
-        print decimal
+            print cadena
+            decimal = int(cadena,16)
+            print decimal
 
-      # Read data from RFID reader
