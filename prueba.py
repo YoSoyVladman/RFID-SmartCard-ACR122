@@ -51,15 +51,15 @@ if __name__ == '__main__':
         hexa = toHexString(data)
         hexan = hexa.split( )
         print hexa, hexan
-        tipo = type(hexa)
+        tipo = type(hexan)
         print 'tipo ', tipo
-        tam = len(hexa)
+        tam = len(hexan)
         print 'leng', tam
         cadena = ''
         
         for x in range(tam):
 
-            cadena = cadena + str(hexa[x])
+            cadena = cadena + str(hexan[x])
 
         print cadena
 	invertida = cadena[::-1]
