@@ -1,4 +1,4 @@
-,import re, sys, signal, os, time, datetime
+import re, sys, signal, os, time, datetime
 import requests
 from smartcard.System import readers
 from smartcard.util import toHexString
