@@ -42,9 +42,10 @@ if __name__ == '__main__':
     conexion.connect()
     data, sw1, sw2 = conexion.transmit(COMMAND)
     print 'datos >:', data
-    print 'tipo ', type(data)
-    print 'leng',len(data)
-        
+    tipo = type(data)
+    print 'tipo ', tipo
+    tam = len(data)
+    print 'leng', tam
     print 'datos en sting :',toHexString(data)
     print "Command: %02X %02X" % (sw1, sw2)
       # Read data from RFID reader
