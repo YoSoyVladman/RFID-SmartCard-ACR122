@@ -48,6 +48,8 @@ if __name__ == '__main__':
     print a
     if a == 144:
         print 'datos >:', data
+        v = data.reverse()
+        print v
         hexa = toHexString(data)
         hexan = hexa.split( )
         print hexa, hexan
@@ -55,9 +57,9 @@ if __name__ == '__main__':
         print 'tipo ', tipo
         tam = len(hexan)
         print 'leng', tam
-        invertido = hexan.reverse()
+        invertido = hexan.reverse() 
         print invertido
         cadena = ''
 
-        
+
       # Read data from RFID reader
