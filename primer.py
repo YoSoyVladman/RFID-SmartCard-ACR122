@@ -14,3 +14,5 @@ print 'lectores disponibles', r
 
 lector = r[0]
 print 'Usando :', lector
+
+conexion = lector.createConnection()
