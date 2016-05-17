@@ -52,12 +52,12 @@ if __name__ == '__main__':
         print 'tipo ', tipo
         tam = len(data)
         print 'leng', tam
-        print 'datos en sting :',toHexString(data)
+        hexa = toHexString(data)
         cadena = ''
         
         for x in range(tam):
 
-            cadena = cadena + str(data[x])
+            cadena = cadena + str(hexa[x])
 
         print cadena
 	invertida = cadena[::-1]
