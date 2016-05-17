@@ -28,4 +28,9 @@ print 'lectores disponibles', r
 lector = r[0]
 print 'Usando :', lector
 
-encender_led()
+conexion = lector.createConnection()
+conexion.connect()
+
+data, sw1, sw2 = connection.transmit(COMMAND)
+print data
+print "Commando: %02X %02X" % (sw1, sw2)
