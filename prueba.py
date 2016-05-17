@@ -52,12 +52,15 @@ if __name__ == '__main__':
         print v
         hexa = toHexString(v)
         hexan = hexa.split( )
-        print hexa, hexan
-        tipo = type(hexan)
-        print 'tipo ', tipo
+        ##print hexa, hexan
         tam = len(hexan)
         print 'leng', tam
         cadena = ''
+
+        for x in range(tam):
+            cadena = cadena + str(hexan[x])
+
+        print cadena
 
 
       # Read data from RFID reader
