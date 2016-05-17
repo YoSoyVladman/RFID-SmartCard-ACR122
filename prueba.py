@@ -58,11 +58,6 @@ if __name__ == '__main__':
         invertido = hexan.reverse()
         print invertido
         cadena = ''
+
         
-        for x in range(tam):
-
-            cadena = cadena + str(invertido[x])
-
-        print cadena
-
       # Read data from RFID reader
