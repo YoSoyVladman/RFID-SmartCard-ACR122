@@ -55,9 +55,12 @@ if __name__ == '__main__':
         print 'datos en sting :',toHexString(data)
         cadena = ''
         
-        for x in tam:
-            cadena = cadena +data[x]
+        for x in range(tam):
+
+            cadena = cadena + str(data[x])
 
         print cadena
+	invertida = cadena[::-1]
+	print invertida
 
       # Read data from RFID reader
