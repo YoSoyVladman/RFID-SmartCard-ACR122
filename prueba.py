@@ -49,8 +49,8 @@ if __name__ == '__main__':
     if a == 144:
         print 'datos >:', data
         hexa = toHexString(data)
-º	hexan = hexa.split( )
-        print hexa
+        hexan = hexa.split( )
+        print hexa, hexan
         tipo = type(hexa)
         print 'tipo ', tipo
         tam = len(hexa)
