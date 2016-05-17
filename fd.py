@@ -1,4 +1,4 @@
-import opc, time
+import opc,time
 
 numLEDs = 512
 cliente = opc.Client('localhost:7890')
