@@ -49,6 +49,8 @@ if __name__ == '__main__':
     print 'leng', tam
     print 'datos en sting :',toHexString(data)
     print "Command: %02X %02X" % (sw1, sw2)
-    print sw1+sw2
-    
+    a = str(sw1)
+    b = str(sw2)
+    print a+b
+
       # Read data from RFID reader
