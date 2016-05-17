@@ -53,5 +53,11 @@ if __name__ == '__main__':
         tam = len(data)
         print 'leng', tam
         print 'datos en sting :',toHexString(data)
+        cadena = ''
+        
+        for x in tam:
+            cadena = cadena +data[x]
+
+        print cadena
 
       # Read data from RFID reader
