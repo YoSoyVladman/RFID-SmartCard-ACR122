@@ -10,7 +10,7 @@ import opc
 COMMAND = [0xff, 0xCA, 0x00, 0x00, 0x00]
 
 ####### FACECANDY ####### 
-numLEDs = 100
+numLEDs = 512
 cliente = opc.Client('localhost:7890')
 negro = [ (0,0,0) ] * numLEDs
 blanco = [ (255,255,255) ] * numLEDs
@@ -18,10 +18,6 @@ rojo = [ (255,0,0) ] * numLEDs
 ####### ID DE LA EXPERIENCIA ########
 Z = 1
 E = 1
-##### PUNTOS #######
-P = 10
-############
-
 
 def encender_led():
     cliente.put_pixels(negro)
@@ -65,6 +61,13 @@ if __name__ == '__main__':
             a = sw1
             print a
             if a == 144:
+                hoy = datetime.datetime.now()
+                dia = hoy.day
+                print dia
+	            mes = hoy.month
+                print mes
+		        ano = hoy.year
+                print ano
                 #print 'datos >:', data
                 v = data[::-1]
                 #print 'invertido',v
@@ -80,45 +83,22 @@ if __name__ == '__main__':
                     cadena = cadena + str(hexan[x])
 
                 #print 'cadena',cadena
-                decimali = int(cadena,16)
-		decimal = str(decimali)
+                decimal = int(cadena,16)
                 print 'decimal',decimal
-                ###### FECHA #####
-                hoy = datetime.datetime.now()
-                dia = str(hoy.day)
-                l_d = len(dia)
-                if l_d == 1:
-                        dia = '0'+dia
-                #print dia
-                mes = str(hoy.month)
-                l_m = len(mes)
-                if l_m == 1:
-                        mes = '0'+mes
-                #print mes
-                ano = str(hoy.year)
-                #print ano
-                fecha = dia + mes + ano[2:]
-                print fecha
-                rfid = decimal + fecha
-                print rfid
-                ##################
                 ###### GET #####
                 url_v = 'http://papalote.cocoplan.mx/v0/visitante'
-                data_v = {'rfid':rfid,'experiencia':E,'zona':Z}
+                data_v = {'rfid':str(decimal),'experiencia':E,'zona':Z}
                 rv  = requests.get(url_v, params = data_v)
-                #print rv
-                #print rv.status_code
+                print rv
+                print rv.status_code
                 ##########
                 if rv.status_code == requests.codes.ok:
-		    print 'Encontrado'
                     encender_led()
-                    sumar_puntos(rfid,P)
+                    sumar_puntos(str(decimal),'10')
                 else:
-		    print 'No encontrado'
                     encender_error()
                 # Read data from RFID reader
                 ############
                 
         except Exception, e:
             continue
-
