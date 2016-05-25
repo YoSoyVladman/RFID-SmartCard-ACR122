@@ -10,11 +10,17 @@ import opc
 COMMAND = [0xff, 0xCA, 0x00, 0x00, 0x00]
 
 ####### FACECANDY ####### 
-numLEDs = 512
+numLEDs = 100
 cliente = opc.Client('localhost:7890')
 negro = [ (0,0,0) ] * numLEDs
 blanco = [ (255,255,255) ] * numLEDs
-
+rojo = [ (255,0,0) ] * numLEDs
+####### ID DE LA EXPERIENCIA ########
+Z = 1
+E = 1
+##### PUNTOS #######
+P = 10
+############
 
 
 def encender_led():
@@ -25,10 +31,18 @@ def encender_led():
     cliente.put_pixels(negro)
 
 
+def encender_error():
+    cliente.put_pixels(negro)
+    time.sleep(.1)
+    cliente.put_pixels(rojo)
+    time.sleep(1.5)
+    cliente.put_pixels(negro)
+
+
 def sumar_puntos(rfid,puntos):
     #encender()
     url = 'http://papalote.cocoplan.mx/v0/agregar_puntos'
-    data = {'rfid':rfid,'puntos':puntos,'zona':3,'experiencia':4}
+    data = {'rfid':rfid,'puntos':puntos,'zona':Z,'experiencia':E}
     r = requests.post(url,data)
     print r
 
@@ -51,30 +65,41 @@ if __name__ == '__main__':
             a = sw1
             print a
             if a == 144:
-		hoy = datetime.datetime.now()
-		dia = hoy.day
-		mes = hoy.month
-		ano = hoy.year
-                print 'datos >:', data
+                #print 'datos >:', data
                 v = data[::-1]
-                print 'invertido',v
+                #print 'invertido',v
                 hexa = toHexString(v)
                 hexan = hexa.split( )
-                print 'hexa',hexa
-		print 'hexan',hexan
+                #print 'hexa',hexa
+                #print 'hexan',hexan
                 tam = len(hexan)
-                print 'leng', tam
+                #print 'leng', tam
                 cadena = ''
 
                 for x in range(tam):
                     cadena = cadena + str(hexan[x])
 
-                print 'cadena',cadena
-                decimal = int(cadena,16)
+                #print 'cadena',cadena
+                decimali = int(cadena,16)
+		decimal = str(decimali)
                 print 'decimal',decimal
-                encender_led()
-                sumar_puntos(str(decimal),'10')
-              # Read data from RFID reader
-        # 
+                ###### GET #####
+                url_v = 'http://papalote.cocoplan.mx/v0/visitante'
+                data_v = {'rfid':decimal,'experiencia':E,'zona':Z}
+                rv  = requests.get(url_v, params = data_v)
+                #print rv
+                #print rv.status_code
+                ##########
+                if rv.status_code == requests.codes.ok:
+		    print 'Encontrado'
+                    encender_led()
+                    sumar_puntos(decimal,P)
+                else:
+		    print 'No encontrado'
+                    encender_error()
+                # Read data from RFID reader
+                ############
+                
         except Exception, e:
             continue
+
