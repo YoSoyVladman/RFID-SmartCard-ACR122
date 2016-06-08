@@ -78,7 +78,11 @@ if __name__ == '__main__':
             #print "Command: %02X %02X" % (sw1, sw2)
             a = sw1
             #print a
+<<<<<<< HEAD
             #logger.info('Comando %s',a)
+=======
+            logger.info('Comando %s',a)
+>>>>>>> 041aa2773a1303ccbc4dd4f88a90cfbdd740d45a
             if a == 144:
                 #print 'datos >:', data
                 v = data[::-1]
@@ -136,6 +140,12 @@ if __name__ == '__main__':
                 ############
                 
         except Exception, e:
+<<<<<<< HEAD
             continue
 
 
+=======
+            logger.error('ERROR %s',e)
+            continue
+
+>>>>>>> 041aa2773a1303ccbc4dd4f88a90cfbdd740d45a
